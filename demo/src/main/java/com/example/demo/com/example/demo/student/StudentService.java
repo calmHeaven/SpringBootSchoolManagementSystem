@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
 @Service
 public class StudentService {
 
@@ -34,24 +33,27 @@ public class StudentService {
 
 	public void deleteStudent(Long studentId) {
 		boolean exists = studentRepository.existsById(studentId);
-		if(!exists){
+		if (!exists) {
 			throw new IllegalStateException("student with id " + studentId + "does not exist");
 		}
 		studentRepository.deleteById(studentId);
 	}
-	@Transactional //doesn't require JPQL Query
-	public void updateStudent(Long studentId, String name, String email){
+
+	@Transactional // doesn't require JPQL Query
+	public void updateStudent(Long studentId, String name, String email, int years, String major) {
 		Student student = studentRepository.findById(studentId)
 				.orElseThrow(() -> new IllegalStateException("student with id " + studentId + "does not exist"));
-		if (name!=null&&name.length()>0 && !Objects.equals(student.getName(), name)) {
+		if (name != null && name.length() > 0 && !Objects.equals(student.getName(), name)) {
 			student.setName(name);
 		}
-		if (email!=null&&email.length()>0 && !Objects.equals(student.getEmail(), email)) {
+		if (email != null && email.length() > 0 && !Objects.equals(student.getEmail(), email)) {
 			Optional<Student> studentOptional = studentRepository.findStudentByEmail(email);
 			if (studentOptional.isPresent()) {
 				throw new IllegalStateException("email taken");
 			}
 			student.setEmail(email);
 		}
+		student.setYears(years);
+		student.setMajor(major);
 	}
 }
