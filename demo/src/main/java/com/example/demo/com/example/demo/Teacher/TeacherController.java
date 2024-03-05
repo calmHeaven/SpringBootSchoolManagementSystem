@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = { "api/v1/student"})
 public class TeacherController {
-    private final TeacherService studentService;
+    private final TeacherService teacherService;
 
     @Autowired
-    public TeacherController(TeacherService studentService) {
-        this.studentService = studentService;
+    public TeacherController(TeacherService sTeacherServiceService) {
+        this.teacherService = teacherService;
     }
 
     @GetMapping()
     public List<Teacher> getStudents() {
-        return studentService.getStudents();
+        return teacherService.getTeachers();
     }
 
     @PostMapping

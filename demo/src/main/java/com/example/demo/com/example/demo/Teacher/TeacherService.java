@@ -10,50 +10,49 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Service
 public class TeacherService {
 
-	private final TeacherRepository studentRepository;
+	private final TeacherRepository teacherRepository;
 
 	@Autowired
-	public TeacherService(TeacherRepository studentRepository) {
-		this.studentRepository = studentRepository;
+	public TeacherService(TeacherRepository teacherRepository) {
+		this.teacherRepository = teacherRepository;
 	}
 
 	@GetMapping
-	public List<Teacher> getStudents() {
-		return studentRepository.findAll();
+	public List<Teacher> getTeachers() {
+		return teacherRepository.findAll();
 	}
 
-	public void addNewStudent(Teacher student) {
-		// Optional<Student> studentOptional = studentRepository
-		// 		.findStudentByEmail(student.getEmail());
-		// if (studentOptional.isPresent()) {
-		// 	throw new IllegalStateException("email taken");
-		// }
-		studentRepository.save(student);
-	}
-
-	public void deleteStudent(Long studentId) {
-		boolean exists = studentRepository.existsById(studentId);
-		if (!exists) {
-			throw new IllegalStateException("student with id " + studentId + "does not exist");
+	public void addNewTeacher(Teacher teacher) {
+		Optional<Teacher> teacherOptional = teacherRepository.(teacher.getEmail());
+		if (teacherOptional.isPresent()) {
+			throw new IllegalStateException("email taken");
 		}
-		studentRepository.deleteById(studentId);
+		teacherRepository.save(teacher);
+	}
+
+	public void deleteTeacher(Long teacherId) {
+		boolean exists = teacherRepository.existsById(teacherId);
+		if (!exists) {
+			throw new IllegalStateException("teacher with id " + teacherId + "does not exist");
+		}
+		teacherRepository.deleteById(teacherId);
 	}
 
 	@Transactional // doesn't require JPQL Query
-	public void updateStudent(Long studentId, String name, String email, int years, String major) {
-		Teacher student = studentRepository.findById(studentId)
-				.orElseThrow(() -> new IllegalStateException("student with id " + studentId + "does not exist"));
-		if (name != null && name.length() > 0 && !Objects.equals(student.getName(), name)) {
-			student.setName(name);
+	public void updateTeacher(Long teacherId, String name, String email, String faculty, String degree) {
+		Teacher teacher = teacherRepository.findById(teacherId)
+				.orElseThrow(() -> new IllegalStateException("teacher with id " + teacherId + "does not exist"));
+		if (name != null && name.length() > 0 && !Objects.equals(teacher.getName(), name)) {
+			teacher.setName(name);
 		}
-		if (email != null && email.length() > 0 && !Objects.equals(student.getEmail(), email)) {
-			Optional<Teacher> studentOptional = studentRepository.findStudentByEmail(email);
-			if (studentOptional.isPresent()) {
+		if (email != null && email.length() > 0 && !Objects.equals(teacher.getEmail(), email)) {
+			Optional<Teacher> teacherOptional = teacherRepository.findTeacherByEmail(email);
+			if (teacherOptional.isPresent()) {
 				throw new IllegalStateException("email taken");
 			}
-			student.setEmail(email);
+			teacher.setEmail(email);
 		}
-		student.setYears(years);
-		student.setMajor(major);
+		teacher.setFaculty(faculty);
+		teacher.setDegree(degree);
 	}
 }
