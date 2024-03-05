@@ -1,4 +1,4 @@
-package com.example.demo.com.example.demo.Student;
+package com.example.demo.com.example.demo.Teacher;
 
 import java.util.*;
 
@@ -8,21 +8,21 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Service
-public class StudentService {
+public class TeacherService {
 
-	private final StudentRepository studentRepository;
+	private final TeacherRepository studentRepository;
 
 	@Autowired
-	public StudentService(StudentRepository studentRepository) {
+	public TeacherService(TeacherRepository studentRepository) {
 		this.studentRepository = studentRepository;
 	}
 
 	@GetMapping
-	public List<Student> getStudents() {
+	public List<Teacher> getStudents() {
 		return studentRepository.findAll();
 	}
 
-	public void addNewStudent(Student student) {
+	public void addNewStudent(Teacher student) {
 		// Optional<Student> studentOptional = studentRepository
 		// 		.findStudentByEmail(student.getEmail());
 		// if (studentOptional.isPresent()) {
@@ -41,13 +41,13 @@ public class StudentService {
 
 	@Transactional // doesn't require JPQL Query
 	public void updateStudent(Long studentId, String name, String email, int years, String major) {
-		Student student = studentRepository.findById(studentId)
+		Teacher student = studentRepository.findById(studentId)
 				.orElseThrow(() -> new IllegalStateException("student with id " + studentId + "does not exist"));
 		if (name != null && name.length() > 0 && !Objects.equals(student.getName(), name)) {
 			student.setName(name);
 		}
 		if (email != null && email.length() > 0 && !Objects.equals(student.getEmail(), email)) {
-			Optional<Student> studentOptional = studentRepository.findStudentByEmail(email);
+			Optional<Teacher> studentOptional = studentRepository.findStudentByEmail(email);
 			if (studentOptional.isPresent()) {
 				throw new IllegalStateException("email taken");
 			}

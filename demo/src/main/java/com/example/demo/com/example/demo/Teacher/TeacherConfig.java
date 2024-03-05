@@ -1,4 +1,4 @@
-package com.example.demo.com.example.demo.Student;
+package com.example.demo.com.example.demo.Teacher;
 
 import java.time.LocalDate;
 import static java.time.Month.*;
@@ -9,12 +9,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class StudentConfig {
+public class TeacherConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(StudentRepository repository){
+    CommandLineRunner commandLineRunner(TeacherRepository repository){
         return args-> {
-            Student mariam = new Student(
+            Teacher mariam = new Teacher(
 				"Mariam",
 				"mariam.jamal@gmail.com",
 				LocalDate.of(2000, JANUARY,5),
@@ -23,7 +23,7 @@ public class StudentConfig {
 
                 
 			);
-            Student alex = new Student(
+            Teacher alex = new Teacher(
 				"Alex",
 				"alex@gmail.com",
 				LocalDate.of(2004, JANUARY, 5),

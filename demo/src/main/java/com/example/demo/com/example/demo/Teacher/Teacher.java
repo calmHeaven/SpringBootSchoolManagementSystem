@@ -1,4 +1,4 @@
-package com.example.demo.com.example.demo.Student;
+package com.example.demo.com.example.demo.Teacher;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -8,47 +8,47 @@ import jakarta.persistence.*;
 @Entity
 @Table
 
-public class Student {
+public class Teacher {
 
     @Id
-    @SequenceGenerator(name = "student_sequence", sequenceName = "student_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_sequence")
+    @SequenceGenerator(name = "teacher_sequence", sequenceName = "teacher_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "teacher_sequence")
     private Long id;
     private String name;
     private String email;
     private LocalDate dob;
-    private String Major;
-    private Integer Years;
+    private String faculty;
+    private String degree;
     @Transient
     private Integer age;
 
-    public Student() {
+    public Teacher() {
     }
 
-    public Student(Long id,
+    public Teacher(Long id,
             String name,
             String email,
             LocalDate dob,
-            String Major,
-            Integer Years) {
+            String faculty,
+            String degree) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.dob = dob;
-        this.Major = Major;
-        this.Years = Years;
+        this.faculty = faculty;
+        this.degree = degree;
     }
 
-    public Student(String name,
+    public Teacher(String name,
             String email,
             LocalDate dob,
-            String Major,
-            Integer Years) {
+            String degree,
+            String faculty) {
         this.name = name;
         this.email = email;
         this.dob = dob;
-        this.Major = Major;
-        this.Years = Years;
+        this.faculty = faculty;
+        this.degree = degree;
 
     }
 
@@ -69,7 +69,6 @@ public class Student {
     }
 
     public String getEmail() {
-
         return this.email;
     }
 
@@ -85,28 +84,28 @@ public class Student {
         this.dob = dob;
     }
 
+    public String getDegree() {
+        return this.degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+
+    public String getFaculty() {
+        return this.faculty;
+    }
+
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
+    }
+
     public Integer getAge() {
         return Period.between(this.dob, LocalDate.now()).getYears();
     }
 
     public void setAge(Integer age) {
         this.age = age;
-    }
-
-    public void setMajor(String Major) {
-        this.Major = Major;
-    }
-
-    public String getMajor() {
-        return Major;
-    }
-
-    public void setYears(Integer Years) {
-        this.Years = Years;
-    }
-
-    public Integer getYears() {
-        return Years;
     }
 
     @Override
@@ -117,8 +116,8 @@ public class Student {
                 "\n, email=" + email +
                 "\n, dob=" + dob +
                 "\n, age=" + age +
-                "Major=" + Major +
-                "LengthofDegree" + Years + "Years" + "\n}";
+                "Major=" + faculty +
+                "LengthofDegree" + degree + "Years" + "\n}";
     }
 
 }

@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "DemoApplication",
+            "request": "launch",
+            "mainClass": "com.example.demo.DemoApplication",
+            "projectName": "demo_"
+        },
+        {
+            "type": "chrome",
+            "name": "http://127.0.0.1:3000/demo/src/main/resources/static/index.html",
+            "request": "launch",
+            "url": "http://127.0.0.1:3000/demo/src/main/resources/static/index.html"
+        }
+    ]
+}

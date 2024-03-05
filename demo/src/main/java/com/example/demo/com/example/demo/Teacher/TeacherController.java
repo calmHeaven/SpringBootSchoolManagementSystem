@@ -1,4 +1,4 @@
-package com.example.demo.com.example.demo.Student;
+package com.example.demo.com.example.demo.Teacher;
 
 import java.util.List;
 
@@ -8,21 +8,21 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = { "api/v1/student"})
-public class StudentController {
-    private final StudentService studentService;
+public class TeacherController {
+    private final TeacherService studentService;
 
     @Autowired
-    public StudentController(StudentService studentService) {
+    public TeacherController(TeacherService studentService) {
         this.studentService = studentService;
     }
 
     @GetMapping()
-    public List<Student> getStudents() {
+    public List<Teacher> getStudents() {
         return studentService.getStudents();
     }
 
     @PostMapping
-    public void registerNewStudent(Student student) {
+    public void registerNewStudent(Teacher student) {
         studentService.addNewStudent(student);
     }
 
