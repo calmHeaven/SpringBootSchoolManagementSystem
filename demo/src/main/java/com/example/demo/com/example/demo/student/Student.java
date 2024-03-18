@@ -120,7 +120,6 @@ public class Student {
                 "Major=" + Major +
                 "LengthofDegree" + Years + "Years" + "\n}";
     }
-
 }
 
 /*

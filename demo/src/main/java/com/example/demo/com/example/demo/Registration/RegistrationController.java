@@ -1,29 +1,35 @@
 package com.example.demo.com.example.demo.Registration;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.example.demo.com.example.demo.Student.*;
 
-import com.example.demo.com.example.demo.Student.Student;
-import com.example.demo.com.example.demo.Student.StudentService;
-
-@RestController
-@RequestMapping(path = { "api/v1/register" })
+@Controller
+@RequestMapping("api/v1/register")
 public class RegistrationController {
-    private final StudentService studentService;
+
+    @Autowired
+    private StudentService studentService;
 
     @Autowired
     public RegistrationController(StudentService studentService) {
         this.studentService = studentService;
     }
-
     @GetMapping("/register")
-    public String showRegistrationForm(Model model) {
-        model.addAttribute("Student", new Student());
-
-        return "index";
+    public String showRegistrationForm() {
+        return "registration"; // return the name of the HTML file (without the extension) containing the
+                               // registration form
     }
 
+    @PostMapping
+    @ResponseBody
+    public String registerNewStudent(@RequestBody Student student) {
+        studentService.addNewStudent(student);
+        return "Student registration successful!";
+    }
 }
