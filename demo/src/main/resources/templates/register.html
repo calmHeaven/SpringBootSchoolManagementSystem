@@ -4,18 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <h1>Registration</h1>
-    <form action="http://localhost:8080/api/v1/register" method="post" th:object="${student}">
+    <form id="registrationForm" action="http://localhost:8080/api/v1/register" method="post" th:object="${student}">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" th:field="*{name}" required><br><br>
+        <input type="text" id="name" name="name" th:field="*{name}" required>
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" th:field="*{email}" required><br><br>
+        <input type="email" id="email" name="email" th:field="*{email}" required>
 
         <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" name="dob" th:field="*{dob}" required><br><br>
+        <input type="date" id="dob" name="dob" th:field="*{dob}" required>
 
         <label for="major">Major:</label>
         <select id="major" name="major" th:field="*{major}">
@@ -23,12 +73,49 @@
             <option value="Mathematics">Mathematics</option>
             <option value="Biology">Biology</option>
             <!-- Add more options for other major courses from UW -->
-        </select><br><br>
+        </select>
 
         <label for="years">Years in Program:</label>
-        <input type="number" id="years" name="years" th:field="*{years}" required><br><br>
+        <input type="number" id="years" name="years" th:field="*{years}" required>
 
         <button type="submit">Register</button>
     </form>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            var formData = new FormData(this); // Get form data
+            var jsonObject = {}; // Convert form data to JSON object
+            formData.forEach(function(value, key) {
+                jsonObject[key] = value;
+            });
+
+            // Send form data to backend API
+            fetch('http://localhost:8080/api/v1/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonObject)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json(); // Parse response body as JSON
+            })
+            .then(data => {
+                console.log('Registration successful:', data);
+                alert('Registration successful!');
+                // Redirect to another page, show success message, or perform other actions
+            })
+            .catch(error => {
+                console.error('Error registering:', error);
+                alert('Error registering: ' + error.message);
+                // Handle registration errors or display error messages to the user
+            });
+        });
+    </script>
 </body>
 </html>
