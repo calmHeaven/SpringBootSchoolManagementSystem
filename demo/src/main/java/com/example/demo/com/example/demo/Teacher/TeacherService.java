@@ -23,7 +23,7 @@ public class TeacherService {
 	}
 
 	public void addNewTeacher(Teacher teacher) {
-		Optional<Teacher> teacherOptional = teacherRepository.(teacher.getEmail());
+		Optional<Teacher> teacherOptional = teacherRepository.findTeacherByEmail(teacher.getEmail());
 		if (teacherOptional.isPresent()) {
 			throw new IllegalStateException("email taken");
 		}

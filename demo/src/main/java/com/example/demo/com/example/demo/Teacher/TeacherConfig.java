@@ -12,14 +12,14 @@ import org.springframework.context.annotation.Configuration;
 public class TeacherConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(teacherRepository repository){
+    CommandLineRunner commandLineRunner(TeacherRepository repository){
         return args-> {
             Teacher mariam = new Teacher(
 				"Mariam",
 				"mariam.jamal@gmail.com",
 				LocalDate.of(2000, JANUARY,5),
-                "Mathematics",
-                "Masters in Applied Mathermatics"
+                "Masters in Applied Mathermatics",
+                "Mathematics"
 
                 
 			);
@@ -27,8 +27,8 @@ public class TeacherConfig {
 				"Alex",
 				"alex@gmail.com",
 				LocalDate.of(2004, JANUARY, 5),
-                "Applied Computer Science",
-                "PhD in Computer Science"
+                "PhD in Computer Science",
+                "Applied Computer Science"
 				);
             repository.saveAll(List.of(mariam, alex)
             );

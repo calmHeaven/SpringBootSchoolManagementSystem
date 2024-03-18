@@ -3,16 +3,15 @@ package com.example.demo.com.example.demo.Teacher;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = { "api/v1/student"})
+@RequestMapping(path = { "api/v1/teacher"})
 public class TeacherController {
-    private final TeacherService teacherService;
+private final TeacherService teacherService;
 
     @Autowired
-    public TeacherController(TeacherService sTeacherServiceService) {
+    public TeacherController(TeacherService teacherService) {
         this.teacherService = teacherService;
     }
 
@@ -22,22 +21,22 @@ public class TeacherController {
     }
 
     @PostMapping
-    public void registerNewStudent(Teacher student) {
-        studentService.addNewStudent(student);
+    public void registerNewStudent(Teacher teacher) {
+        teacherService.addNewTeacher(teacher);
     }
 
     @DeleteMapping(path = "{studentID}")
-    public void deleteStudent(@PathVariable("studentID") Long studentId) {
-        studentService.deleteStudent(studentId);
+    public void deleteStudent(@PathVariable("studentID") Long teacherId) {
+        teacherService.deleteTeacher(teacherId);
     }
 
-    @PutMapping(path = "{studentId}")
+    @PutMapping(path = "{teacherId}")
     public void updateStudent(
-            @PathVariable("studentId") Long studentId,
+            @PathVariable("teacherId") Long teacherId,
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String email,
-            @RequestParam(required = false) int years,
-            @RequestParam(required = false) String major) {
-        studentService.updateStudent(studentId, name, email, years, major);
+            @RequestParam(required = false) String faculty,
+            @RequestParam(required = false) String degree) {
+        teacherService.updateTeacher(teacherId, name, email, faculty, degree);
     }
 }
