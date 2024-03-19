@@ -125,7 +125,7 @@ public class Teacher {
 /*
  * Switch up this Idea to have a dropdown of all the major courses in UW.
  * Make a HTTP path for registration,
- * then put all of the major courses into a sort of list DS
+ * then put all of the major courses into a sort of list DB
  * GOOD LUCK DAWGGGG!
  * 
  */
