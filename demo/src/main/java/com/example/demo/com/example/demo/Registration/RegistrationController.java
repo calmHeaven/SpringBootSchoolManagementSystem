@@ -22,7 +22,7 @@ public class RegistrationController {
     }
     @GetMapping("/register")
     public String showRegistrationForm() {
-        return "registration"; // return the name of the HTML file (without the extension) containing the
+        return "register"; // return the name of the HTML file (without the extension) containing the
                                // registration form
     }
 
