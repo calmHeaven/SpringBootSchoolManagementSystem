@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class StudentConfig {
 
-    @SuppressWarnings("null")
     @Bean
     CommandLineRunner commandLineRunner(StudentRepository repository){
         return args-> {

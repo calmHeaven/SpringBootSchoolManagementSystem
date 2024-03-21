@@ -57,7 +57,7 @@
 </head>
 <body>
     <h1>Registration</h1>
-    <form id="registrationForm" action="http://localhost:8080/api/v1/register" method="post" th:object="${student}">
+    <form id="registrationForm" action="http://localhost:8080/api/v1" method="post" th:object="${student}">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" th:field="*{name}" required>
 
@@ -83,7 +83,7 @@
 
     <script>
         document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
+            // event.preventDefault(); // Prevent the default form submission
 
             var formData = new FormData(this); // Get form data
             var jsonObject = {}; // Convert form data to JSON object
@@ -92,7 +92,7 @@
             });
 
             // Send form data to backend API
-            fetch('http://localhost:8080/api/v1/student', {
+            fetch('api/v1/student', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
