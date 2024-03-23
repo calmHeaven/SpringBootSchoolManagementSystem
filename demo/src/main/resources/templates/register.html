@@ -1,88 +1,187 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
+    <title>Student Management</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
+            transition: background-color 0.3s ease;
         }
 
         h1 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-top: 50px;
+            font-family: 'Coptic';
         }
 
         form {
             max-width: 400px;
-            margin: 0 auto;
+            margin: 20px auto;
             padding: 20px;
             background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
         }
 
         label {
+            display: block;
+            margin-bottom: 5px;
             font-weight: bold;
         }
 
-        input, select {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        button {
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select,
+        input[type="number"] {
             width: 100%;
             padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        button[type="submit"],
+        button {
             background-color: #007bff;
-            color: #fff;
+            color: white;
+            padding: 12px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            width: 100%;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
             background-color: #0056b3;
         }
+
+        .action-form {
+            display: none;
+        }
+
+        .action-form.visible {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
     </style>
 </head>
 <body>
-    <h1>Registration</h1>
-    <form id="registrationForm" action="http://localhost:8080/api/v1/register" method="post" th:object="${student}">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" th:field="*{name}" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" th:field="*{email}" required>
-
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" name="dob" th:field="*{dob}" required>
-
-        <label for="major">Major:</label>
-        <select id="major" name="major" th:field="*{major}">
-            <option value="Computer Science">Computer Science</option>
-            <option value="Mathematics">Mathematics</option>
-            <option value="Biology">Biology</option>
-            <!-- Add more options for other major courses from UW -->
-        </select>
-
-        <label for="years">Years in Program:</label>
-        <input type="number" id="years" name="years" th:field="*{years}" required>
-
+    <h1>Student Management</h1>
+    
+    <!-- Registration form -->
+    <form id="registrationForm" action="http://localhost:8080/api/v1/student" method="post">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+        </div>
+        <div class="form-group">
+            <label for="major">Major:</label>
+            <select id="major" name="major">
+                <option value="Computer Science">Computer Science</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Biology">Biology</option>
+                <!-- Add more options for other major courses from UW -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="years">Years in Program:</label>
+            <input type="number" id="years" name="years" required>
+        </div>
         <button type="submit">Register</button>
     </form>
 
+    <!-- CRUD operation forms -->
+    <h2>Actions</h2>
+    <button id="getButton">Get Student</button>
+    <button id="putButton">Update Student</button>
+    <button id="deleteButton">Delete Student</button>
+
+    <!-- Forms for GET, PUT, and DELETE requests -->
+    <form id="getForm" class="action-form">
+        <div class="form-group">
+            <label for="studentIdGet">Student ID:</label>
+            <input type="number" id="studentIdGet" name="studentIdGet" required>
+        </div>
+        <button type="submit">Get Student</button>
+    </form>
+
+    <form id="putForm" class="action-form">
+        <div class="form-group">
+            <label for="studentIdPut">Student ID:</label>
+            <input type="number" id="studentIdPut" name="studentIdPut" required>
+        </div>
+        <div class="form-group">
+            <label for="namePut">Name:</label>
+            <input type="text" id="namePut" name="namePut" required>
+        </div>
+        <div class="form-group">
+            <label for="emailPut">Email:</label>
+            <input type="email" id="emailPut" name="emailPut" required>
+        </div>
+        <div class="form-group">
+            <label for="dobPut">Date of Birth:</label>
+            <input type="date" id="dobPut" name="dobPut" required>
+        </div>
+        <div class="form-group">
+            <label for="majorPut">Major:</label>
+            <select id="majorPut" name="majorPut" required>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Biology">Biology</option>
+                <!-- Add more options for other major courses from UW -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="yearsPut">Years in Program:</label>
+            <input type="number" id="yearsPut" name="yearsPut" required>
+        </div>
+        <button type="submit">Update Student</button>
+    </form>
+
+    <form id="deleteForm" class="action-form">
+        <div class="form-group">
+            <label for="studentIdDelete">Student ID:</label>
+            <input type="number" id="studentIdDelete" name="studentIdDelete" required>
+        </div>
+        <button type="submit">Delete Student</button>
+    </form>
+
+
     <script>
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+  document.getElementById('registrationForm').addEventListener('submit', function(event) {
             // event.preventDefault(); // Prevent the default form submission
 
             var formData = new FormData(this); // Get form data
@@ -114,6 +213,91 @@
                 console.error('Error registering:', error);
                 alert('Error registering: ' + error.message);
                 // Handle registration errors or display error messages to the user
+            });
+        });
+
+        document.getElementById('getButton').addEventListener('click', function() {
+            document.getElementById('getForm').style.display = 'block';
+        });
+
+        document.getElementById('putButton').addEventListener('click', function() {
+            document.getElementById('putForm').style.display = 'block';
+        });
+
+        document.getElementById('deleteButton').addEventListener('click', function() {
+            document.getElementById('deleteForm').style.display = 'block';
+        });
+
+        document.getElementById('getForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var studentId = document.getElementById('studentIdGet').value;
+            fetch('http://localhost:8080/api/v1/student/' + studentId)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('GET successful:', data);
+                alert('GET successful!');
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                alert('Error fetching data: ' + error.message);
+            });
+        });
+
+        document.getElementById('putForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var studentId = document.getElementById('studentIdPut').value;
+            var formData = new FormData(this);
+            var jsonObject = {};
+            formData.forEach(function(value, key) {
+                jsonObject[key] = value;
+            });
+            fetch('http://localhost:8080/api/v1/student/' + studentId, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonObject)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('PUT successful:', data);
+                alert('PUT successful!');
+            })
+            .catch(error => {
+                console.error('Error updating data:', error);
+                alert('Error updating data: ' + error.message);
+            });
+        });
+
+        document.getElementById('deleteForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var studentId = document.getElementById('studentIdDelete').value;
+            fetch('http://localhost:8080/api/v1/student/' + studentId, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('DELETE successful:', data);
+                alert('DELETE successful!');
+            })
+            .catch(error => {
+                console.error('Error deleting data:', error);
+                alert('Error deleting data: ' + error.message);
             });
         });
     </script>
