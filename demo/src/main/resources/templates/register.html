@@ -3,184 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Management</title>
+    <title>School Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <style>
+        /* Additional custom styles */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            transition: background-color 0.3s ease;
+            background-color: #f9f9f9;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
         }
 
-        h1 {
-            text-align: center;
-            margin-top: 50px;
-            font-family: 'Coptic';
+        .navbar {
+            background-color: #333;
         }
 
-        form {
-            max-width: 400px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="date"],
-        select,
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            transition: border-color 0.3s ease;
-        }
-
-        button[type="submit"],
-        button {
-            background-color: #007bff;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .action-form {
-            display: none;
-        }
-
-        .action-form.visible {
-            display: block;
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: #fff;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
 
-        .form-group:last-child {
-            margin-bottom: 0;
-        }
-
-        .error {
-            color: red;
-        }
-
-        .success {
-            color: green;
-        }
+        /* Additional custom styles can be added here */
     </style>
 </head>
 <body>
-    <h1>Student Management</h1>
     
-    <!-- Registration form -->
-    <form id="registrationForm" action="http://localhost:8080/api/v1/student" method="post">
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">School Management</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
         </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" required>
-        </div>
-        <div class="form-group">
-            <label for="major">Major:</label>
-            <select id="major" name="major">
-                <option value="Computer Science">Computer Science</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Biology">Biology</option>
-                <!-- Add more options for other major courses from UW -->
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="years">Years in Program:</label>
-            <input type="number" id="years" name="years" required>
-        </div>
-        <button type="submit">Register</button>
-    </form>
+    </nav>
 
-    <!-- CRUD operation forms -->
-    <h2>Actions</h2>
-    <button id="getButton">Get Student</button>
-    <button id="putButton">Update Student</button>
-    <button id="deleteButton">Delete Student</button>
+    <div class="container mt-5">
+        <h1 class="text-center mb-5">School Management</h1>
+        
+        <!-- Registration form -->
+        <form id="registrationForm" action="http://localhost:8080/api/v1/student" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" class="form-control" id="dob" name="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="major">Major:</label>
+                <select class="form-control" id="major" name="major">
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Biology">Biology</option>
+                    <!-- Add more options for other major courses from UW -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="years">Years in Program:</label>
+                <input type="number" class="form-control" id="years" name="years" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
 
-    <!-- Forms for GET, PUT, and DELETE requests -->
-    <form id="getForm" class="action-form">
-        <div class="form-group">
-            <label for="studentIdGet">Student ID:</label>
-            <input type="number" id="studentIdGet" name="studentIdGet" required>
-        </div>
-        <button type="submit">Get Student</button>
-    </form>
+        <!-- CRUD operation forms -->
+        <h2 class="mt-5">Actions</h2>
+        <button id="getButton" class="btn btn-primary"><i class="fas fa-search"></i> Get Student</button>
+        <button id="putButton" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Update Student</button>
+        <button id="deleteButton" class="btn btn-primary"><i class="fas fa-trash-alt"></i> Delete Student</button>
 
-    <form id="putForm" class="action-form">
-        <div class="form-group">
-            <label for="studentIdPut">Student ID:</label>
-            <input type="number" id="studentIdPut" name="studentIdPut" required>
-        </div>
-        <div class="form-group">
-            <label for="namePut">Name:</label>
-            <input type="text" id="namePut" name="namePut" required>
-        </div>
-        <div class="form-group">
-            <label for="emailPut">Email:</label>
-            <input type="email" id="emailPut" name="emailPut" required>
-        </div>
-        <div class="form-group">
-            <label for="dobPut">Date of Birth:</label>
-            <input type="date" id="dobPut" name="dobPut" required>
-        </div>
-        <div class="form-group">
-            <label for="majorPut">Major:</label>
-            <select id="majorPut" name="majorPut" required>
-                <option value="Computer Science">Computer Science</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Biology">Biology</option>
-                <!-- Add more options for other major courses from UW -->
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="yearsPut">Years in Program:</label>
-            <input type="number" id="yearsPut" name="yearsPut" required>
-        </div>
-        <button type="submit">Update Student</button>
-    </form>
+        <!-- Forms for GET, PUT, and DELETE requests -->
+        <form id="getForm" class="action-form mt-3" style="display: none;">
+            <div class="form-group">
+                <label for="studentIdGet">Student ID:</label>
+                <input type="number" class="form-control" id="studentIdGet" name="studentIdGet" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Get Student</button>
+        </form>
 
-    <form id="deleteForm" class="action-form">
-        <div class="form-group">
-            <label for="studentIdDelete">Student ID:</label>
-            <input type="number" id="studentIdDelete" name="studentIdDelete" required>
-        </div>
-        <button type="submit">Delete Student</button>
-    </form>
+        <form id="putForm" class="action-form mt-3" style="display: none;">
+            <div class="form-group">
+                <label for="studentIdPut">Student ID:</label>
+                <input type="number" class="form-control" id="studentIdPut" name="studentIdPut" required>
+            </div>
+            <!-- Add input fields for updating student data -->
+            <button type="submit" class="btn btn-primary">Update Student</button>
+        </form>
 
-
-    <script>
+        <form id="deleteForm" class="action-form mt-3" style="display: none;">
+            <div class="form-group">
+                <label for="studentIdDelete">Student ID:</label>
+                <input type="number" class="form-control" id="studentIdDelete" name="studentIdDelete" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Delete Student</button>
+        </form>
+    </div>
+<script>
   document.getElementById('registrationForm').addEventListener('submit', function(event) {
             // event.preventDefault(); // Prevent the default form submission
 
@@ -301,5 +241,7 @@
             });
         });
     </script>
+
+    
 </body>
 </html>
