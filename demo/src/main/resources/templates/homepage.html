@@ -3,93 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Management System</title>
-    <style>
-        /* style.css */
-/* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <title>School Management System</title>
+<style>
+        /* CSS Styles provided */
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
-body, html {
-    height: 100%;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-}
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            list-style: none;
+        }
 
-/* Navbar Styles */
-.navbar {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
-}
+        body {
+            color: #ededed;
+            background: #081b29;
+        }
 
-.container {
-    width: 90%;
-    margin: auto;
-    overflow: hidden;
-}
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 10%;
+            background: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
 
-.navbar-brand {
-    float: left;
-    display: block;
-    padding: 0 1rem;
-    text-decoration: none;
-    color: #fff;
-}
+        .navbar-brand {
+            font-size: 25px;
+            color: #ededed;
+            text-decoration: none;
+            font-weight: 600;
+        }
 
-.navbar-nav {
-    float: right;
-}
+        .navbar-nav {
+            display: flex;
+            gap: 4em;
+        }
 
-.nav-item {
-    display: inline;
-    padding: 0 1rem;
-    text-decoration: none;
-    color: #fff;
-}
+        .nav-item {
+            position: relative;
+            color: white;
+            font-weight: 500;
+            margin-left: 40px;
+        }
 
-/* Hero Section Styles */
-.hero {
-    background: #007bff;
-    color: #fff;
-    padding: 2rem 0;
-    text-align: center;
-}
+        .nav-item::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 0px;
+            height: 4px;
+            border-radius: 1em;
+            background-color: #03e9f4;
+            box-shadow: 0 0 10px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+            transition: 0.4s ease;
+        }
 
-.btn-primary {
-    background: #0056b3;
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    text-decoration: none;
-    border-radius: 5px;
-}
+        .nav-item:hover::before {
+            width: 100%;
+        }
 
-/* Features Section Styles */
-.features {
-    padding: 2rem 0;
-    text-align: center;
-}
+        .hero {
+            background-color: #081b29;
+            color: #ededed;
+            padding: 200px 0;
+            text-align: center;
+        }
 
-.feature-item {
-    margin-bottom: 1rem;
-}
+        .hero h1 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
 
-/* Footer Styles */
-.footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
-}
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
 
-        </style>
+        .features {
+            background-color: #081b29;
+            color: #ededed;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .feature-item {
+            margin-bottom: 40px;
+        }
+
+        .feature-item h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .feature-item p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background-color: #081b29;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .footer p {
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="navbar-brand">Student Management</a>
+            <a href="#" class="navbar-brand">School Management</a>
             <div class="navbar-nav">
                 <a href="#" class="nav-item">Home</a>
                 <a href="#" class="nav-item">Features</a>
@@ -101,9 +137,9 @@ body, html {
 
     <header class="hero">
         <div class="container">
-            <h1>Welcome to the Student Management System</h1>
+            <h1>Welcome to the School Management System</h1>
             <p>Manage your students efficiently and effectively with our intuitive platform.</p>
-            <a href="#" class="btn btn-primary">Get Started</a>
+            <a href="./register.html" class="btn btn-primary">Get Started</a>
         </div>
     </header>
 

@@ -171,8 +171,13 @@
         document.getElementById('getForm').addEventListener('submit', function(event) {
             event.preventDefault();
             var studentId = document.getElementById('studentIdGet').value;
-            fetch('http://localhost:8080/api/v1/student/' + studentId)
-            .then(response => {
+            fetch('http://localhost:8080/api/v1/student' ,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'body':'studentId',
+                },
+            });
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -186,7 +191,6 @@
                 console.error('Error fetching data:', error);
                 alert('Error fetching data: ' + error.message);
             });
-        });
 
         document.getElementById('putForm').addEventListener('submit', function(event) {
             event.preventDefault();
