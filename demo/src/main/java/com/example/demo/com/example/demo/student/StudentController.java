@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = { "api/v1/student"})
+@RequestMapping(path = { "api/v1/student" })
 public class StudentController {
     private final StudentService studentService;
 
@@ -17,18 +17,8 @@ public class StudentController {
     }
 
     @GetMapping()
-    public ResponseEntity<?> getStudents(@RequestParam(required = false) Long studentId) {
-        if (studentId != null) {
-            Student student = studentService.getStudents(studentId);
-            if (student != null) {
-                return ResponseEntity.ok(student);
-            } else {
-                return ResponseEntity.notFound().build();
-            }
-        } else {
-            List<Student> students = studentService.getStudents();
-            return ResponseEntity.ok(students);
-        }
+    public List<Student> getStudents() {
+        return studentService.getStudents();
     }
 
     @PostMapping
