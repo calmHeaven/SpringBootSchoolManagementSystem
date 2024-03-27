@@ -57,4 +57,9 @@ public class StudentService {
 		student.setYears(years);
 		student.setMajor(major);
 	}
+
+	public Student getStudents(Long studentId) {
+		return studentRepository.findById(studentId)
+				.orElseThrow(() -> new IllegalStateException("student with id " + studentId + "does not exist"));
+	}
 }

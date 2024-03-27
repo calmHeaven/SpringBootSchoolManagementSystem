@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.com.example.demo.Student.*;
 
+@CrossOrigin(origins = "http://localhost:8080/api/v1/student/")
 @RequestMapping("api/v1/register")
 @RestController
 public class RegistrationController {

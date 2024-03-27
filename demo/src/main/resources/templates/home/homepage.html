@@ -22,16 +22,13 @@
         }
 
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 10%;
-            background: transparent;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
+background: rgba(255, 255, 255, 0.24);
+border-radius: 0px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(1px);
+-webkit-backdrop-filter: blur(1px);
+border: 1px solid rgba(255, 255, 255, 0.06);
+padding: 20px 0;
         }
 
         .navbar-brand {
@@ -39,18 +36,35 @@
             color: #ededed;
             text-decoration: none;
             font-weight: 600;
+            align-content: center;
+            
         }
 
         .navbar-nav {
-            display: flex;
-            gap: 4em;
+ position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  /*border-bottom: 1px solid rgba(158, 158, 158, 0.298);*/
+  mix-blend-mode: normal;
+  font-weight: 500;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 1300px;
+  background-color: rgba(101, 101, 101, 0.132);
+  backdrop-filter: blur(20px);
         }
 
         .nav-item {
             position: relative;
             color: white;
             font-weight: 500;
-            margin-left: 40px;
+            margin-left: 4em;
+            display: inline-block;
+            align-items: right
+            ;
         }
 
         .nav-item::before {
@@ -114,9 +128,31 @@
             background-color: #081b29;
             color: white;
             text-align: center;
-            padding: 20px 0;
+            /* padding: 20px 0; */
         }
+        .btn-btn-primary{
+            background-color: #03e9f4;
+            color: #081b29;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        .btn-btn-primary::before{
+            /* content: ""; */
+            position: absolute;
 
+            width: 0px;
+            height: 1px;
+            border-radius: 1em;
+            background-color: #03e9f4;
+            box-shadow: 0 0 10px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+            transition: 0.4s ease;
+        }
+        .btn-btn-primary:hover::before{
+            width: 2%;
+        }
         .footer p {
             font-size: 14px;
         }
@@ -125,7 +161,7 @@
 <body>
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="navbar-brand">School Management</a>
+        <a href="#" class="navbar-brand">School Management</a>
             <div class="navbar-nav">
                 <a href="#" class="nav-item">Home</a>
                 <a href="#" class="nav-item">Features</a>
@@ -139,7 +175,7 @@
         <div class="container">
             <h1>Welcome to the School Management System</h1>
             <p>Manage your students efficiently and effectively with our intuitive platform.</p>
-            <a href="./register.html" class="btn btn-primary">Get Started</a>
+            <a href="/demo/src/main/resources/templates/index/register.html" class="btn-btn-primary">Get Started</a>
         </div>
     </header>
 

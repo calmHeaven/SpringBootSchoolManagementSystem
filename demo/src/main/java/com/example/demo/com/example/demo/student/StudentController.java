@@ -17,8 +17,18 @@ public class StudentController {
     }
 
     @GetMapping()
-    public List<Student> getStudents() {
-        return studentService.getStudents();
+    public ResponseEntity<?> getStudents(@RequestParam(required = false) Long studentId) {
+        if (studentId != null) {
+            Student student = studentService.getStudents(studentId);
+            if (student != null) {
+                return ResponseEntity.ok(student);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } else {
+            List<Student> students = studentService.getStudents();
+            return ResponseEntity.ok(students);
+        }
     }
 
     @PostMapping
