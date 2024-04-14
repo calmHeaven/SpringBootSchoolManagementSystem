@@ -9,23 +9,89 @@
     <style>
         /* Additional custom styles */
         body {
-            background-color: #f9f9f9;
-            color: #333;
-            font-family: 'Poppins', sans-serif;
-        }
+    background-color: #f9f9f9;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
 
-        .navbar {
-            background-color: #333;
-        }
+.navbar {
+    background-color: #5e35b1; /* Deep purple */
+    padding: 1rem 0.5px; /* Add padding for better spacing */
 
-        .navbar-brand,
-        .navbar-nav .nav-link {
-            color: #fff;
-        }
+}
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #fff;
+    font-weight: bold; /* Make the text bolder */
+}
+
+.navbar-brand:hover,
+.navbar-nav .nav-link:hover {
+    color: #ffc107; /* Yellow on hover */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+Add some styling for input fields
+.form-control {
+    border: 2px solid #5e35b1; /* Match with navbar color */
+    border-radius: 5px;
+    transition: border-color 0.3s ease-in-out; /* Add smooth transition effect */
+}
+
+.form-control:focus {
+    border-color: #ffc107; /* Yellow on focus */
+}
+
+/* Add some styling for buttons */
+.btn {
+    background-color: #5e35b1; /* Deep purple */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out; /* Add smooth transition effect */
+}
+
+.btn:hover {
+    background-color: #ffc107; /* Yellow on hover */
+}
+/* Add glass effect to registration form */
+.registration-form {
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+
+/* Style the input fields and buttons within the registration form */
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="password"],
+.registration-form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for inputs */
+}
+
+.registration-form button {
+    background-color: #5e35b1; /* Deep purple */
+    color: #fff;
+    cursor: pointer;
+}
+
+.registration-form button:hover {
+    background-color: #ffc107; /* Yellow on hover */
+}
+
 
         /* Additional custom styles can be added here */
     </style>
@@ -33,7 +99,7 @@
 <body>
     
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">School Management</a>
+        <a class="navbar-brand" href="/demo/src/main/resources/templates/home/homepage.html">School Management</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -56,7 +122,7 @@
     </nav>
 
     <div class="container mt-5">
-        <h1 class="text-center mb-5">School Management</h1>
+        <h1 class="text-center mb-5">Registration</h1>
         
         <!-- Registration form -->
         <form id="registrationForm" action="http://localhost:8080/api/v1/student" method="post">
@@ -144,33 +210,54 @@
         <button id="deleteButton" class="btn btn-primary"><i class="fas fa-trash-alt"></i> Delete Student</button>
 
         <!-- Forms for GET, PUT, and DELETE requests -->
-        <form id="getForm" class="action-form mt-3" style="display: none;">
-            <div class="form-group">
-                <label for="studentIdGet">Student ID:</label>
-                <input type="number" class="form-control" id="studentIdGet" name="studentIdGet" required>
-            </div>
-            <button method="get" type="submit" class="btn btn-primary">Get Student</button>
-        </form>
+<form id="getForm" class="action-form mt-3" style="display: none;">
+    <div class="form-group">
+        <label for="studentIdGet">Student ID:</label>
+        <input type="number" class="form-control" id="studentIdGet" name="studentIdGet" required>
+    </div>
+    <button type="submit" class="btn btn-primary" id="getStudentButton" disabled>Get Student</button>
+</form>
 
-        <form id="putForm" class="action-form mt-3" style="display: none;">
-            <div class="form-group">
-                <label for="studentIdPut">Student ID:</label>
-                <input type="number" class="form-control" id="studentIdPut" name="studentIdPut" required>
-            </div>
-            <!-- Add input fields for updating student data -->
-            <button type="submit" class="btn btn-primary">Update Student</button>
-        </form>
+<form id="putForm" class="action-form mt-3" style="display: none;">
+    <div class="form-group">
+        <label for="studentIdPut">Student ID:</label>
+        <input type="number" class="form-control" id="studentIdPut" name="studentIdPut" required>
+    </div>
+    <div class="form-group">
+        <label for="namePut">Name:</label>
+        <input type="text" class="form-control" id="namePut" name="namePut">
+    </div>
+    <div class="form-group">
+        <label for="emailPut">Email:</label>
+        <input type="email" class="form-control" id="emailPut" name="emailPut">
+    </div>
+    <div class="form-group">
+        <label for="dobPut">Date of Birth:</label>
+        <input type="date" class="form-control" id="dobPut" name="dobPut">
+    </div>
+    <div class="form-group">
+        <label for="majorPut">Major:</label>
+        <select class="form-control" id="majorPut" name="majorPut">
+            <!-- Options for major -->
+            <option value="Aboriginal Governance">Aboriginal Governance (See Indigenous Studies)</option>
+            <!-- Add more options as needed -->
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="yearsPut">Years in Program:</label>
+        <input type="number" class="form-control" id="yearsPut" name="yearsPut">
+    </div>
+    <button type="submit" class="btn btn-primary">Update Student</button>
+</form>
 
         <form id="deleteForm" class="action-form mt-3" style="display: none;">
-            <div class="form-group">
-                <label for="studentIdDelete">Student ID:</label>
-                <input type="number" class="form-control" id="studentIdDelete" name="studentIdDelete" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Delete Student</button>
-        </form>
+    <div class="form-group">
+        <label for="studentIdDelete">Student ID:</label>
+        <input type="number" class="form-control" id="studentIdDelete" name="studentIdDelete" required>
     </div>
-<script src="./index.js">    </script>
-
-    
+    <button type="submit" class="btn btn-primary" id="deleteStudentButton" disabled>Delete Student</button>
+</form>
+    </div>
+<script src="/demo\src\main\resources\static\index.js">    </script>
 </body>
 </html>
