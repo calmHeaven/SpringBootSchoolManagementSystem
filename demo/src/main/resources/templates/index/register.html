@@ -200,16 +200,15 @@ Add some styling for input fields
                 <label for="years">Years in Program:</label>
                 <input type="number" class="form-control" id="years" name="years" required>
             </div>
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button id="submitregistration" type="submit" class="btn btn-primary">Register</button>
         </form>
 
-        <!-- CRUD operation forms -->
-        <h2 class="mt-5">Actions</h2>
-        <button id="getButton" class="btn btn-primary"><i class="fas fa-search"></i> Get Student</button>
-        <button id="putButton" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Update Student</button>
-        <button id="deleteButton" class="btn btn-primary"><i class="fas fa-trash-alt"></i> Delete Student</button>
+  <h2 class="mt-5">Actions</h2>
+<button id="getButton" class="btn btn-primary"><i class="fas fa-search"></i> Get Student</button>
+<button id="putButton" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Update Student</button>
+<button id="deleteButton" class="btn btn-primary"><i class="fas fa-trash-alt"></i> Delete Student</button>
 
-        <!-- Forms for GET, PUT, and DELETE requests -->
+<!-- Forms for GET, PUT, and DELETE requests -->
 <form id="getForm" class="action-form mt-3" style="display: none;">
     <div class="form-group">
         <label for="studentIdGet">Student ID:</label>
@@ -238,7 +237,6 @@ Add some styling for input fields
     <div class="form-group">
         <label for="majorPut">Major:</label>
         <select class="form-control" id="majorPut" name="majorPut">
-            <!-- Options for major -->
             <option value="Aboriginal Governance">Aboriginal Governance (See Indigenous Studies)</option>
             <!-- Add more options as needed -->
         </select>
@@ -250,14 +248,13 @@ Add some styling for input fields
     <button type="submit" class="btn btn-primary">Update Student</button>
 </form>
 
-        <form id="deleteForm" class="action-form mt-3" style="display: none;">
+<form id="deleteForm" class="action-form mt-3" style="display: none;">
     <div class="form-group">
         <label for="studentIdDelete">Student ID:</label>
         <input type="number" class="form-control" id="studentIdDelete" name="studentIdDelete" required>
     </div>
     <button type="submit" class="btn btn-primary" id="deleteStudentButton" disabled>Delete Student</button>
 </form>
-    </div>
 <script src="/demo\src\main\resources\static\index.js">    </script>
 </body>
 </html>

@@ -37,11 +37,11 @@ This is a Spring Boot project for managing school-related tasks such as student 
    mvn spring-boot:run
    ```
 
-   The application will start running at [http://localhost:8080](http://localhost:8080).
+   The application will start running at [http://localhost:8080/api/v1/[entityname]/].
 
 4. **Access the Application**:
 
-   Open a web browser and navigate to [http://localhost:8080](http://localhost:8080) to access the School Management System.
+   Open a web browser and navigate to [http://localhost:8080/api/v1/[entityname]] to access the School Management System.
 
 ## Usage
 
