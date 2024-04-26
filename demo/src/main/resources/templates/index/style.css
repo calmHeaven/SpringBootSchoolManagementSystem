@@ -1,0 +1,86 @@
+        /* Additional custom styles */
+        body {
+    background-color: #f9f9f9;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    background-color: #5e35b1; /* Deep purple */
+    padding: 1rem 0.5px; /* Add padding for better spacing */
+
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #fff;
+    font-weight: bold; /* Make the text bolder */
+}
+
+.navbar-brand:hover,
+.navbar-nav .nav-link:hover {
+    color: #ffc107; /* Yellow on hover */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+Add some styling for input fields
+.form-control {
+    border: 2px solid #5e35b1; /* Match with navbar color */
+    border-radius: 5px;
+    transition: border-color 0.3s ease-in-out; /* Add smooth transition effect */
+}
+
+.form-control:focus {
+    border-color: #ffc107; /* Yellow on focus */
+}
+
+/* Add some styling for buttons */
+.btn {
+    background-color: #5e35b1; /* Deep purple */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out; /* Add smooth transition effect */
+}
+
+.btn:hover {
+    background-color: #ffc107; /* Yellow on hover */
+}
+/* Add glass effect to registration form */
+.registration-form {
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+
+/* Style the input fields and buttons within the registration form */
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="password"],
+.registration-form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for inputs */
+}
+
+.registration-form button {
+    background-color: #5e35b1; /* Deep purple */
+    color: #fff;
+    cursor: pointer;
+}
+
+.registration-form button:hover {
+    background-color: #ffc107; /* Yellow on hover */
+}
+
+
