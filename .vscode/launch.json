@@ -5,6 +5,13 @@
             "name": "DemoApplication",
             "request": "launch",
             "mainClass": "com.example.demo.DemoApplication",
+            "projectName": "demo"
+        },
+        {
+            "type": "java",
+            "name": "DemoApplication",
+            "request": "launch",
+            "mainClass": "com.example.demo.DemoApplication",
             "projectName": "demo_"
         },
         {
