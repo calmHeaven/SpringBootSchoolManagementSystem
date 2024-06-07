@@ -16,7 +16,6 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    // find a way to use parameters in the get request, mess some stuff up, see what happens,then try to fix it
     @GetMapping()
     public List<Student> getStudents() {
         return studentService.getStudents();
