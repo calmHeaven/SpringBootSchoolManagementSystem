@@ -3,11 +3,10 @@ package com.example.demo.com.example.demo.Student;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = { "api/v1/student" })
+@RequestMapping("/api/v1/student")
 public class StudentController {
     private final StudentService studentService;
 
@@ -16,6 +15,8 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+    // find a way to use parameters in the get request, mess some stuff up, see what
+    // happens,then try to fix it
     @GetMapping()
     public List<Student> getStudents() {
         return studentService.getStudents();

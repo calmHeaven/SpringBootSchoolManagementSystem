@@ -37,8 +37,8 @@
         <h1 class="text-center mb-5">Registration</h1>
 
         <!-- Registration form -->
-        <form id="registrationForm" action="/api/v1/student" method="post">
-            <div class="form-group">
+     <form id="registrationForm" action="http://localhost:8080/api/v1/student" method="post" th:object="${student}">
+                    <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" id="name" name="name" required>
             </div>
@@ -115,7 +115,10 @@
             </div>
             <button id="submitregistration" type="submit" class="btn btn-primary">Register</button>
         </form>
-
+        <br><br>
+    <!-- Dropdown Button -->
+<button id="dropdownToggle">Toggle Dropdown</button>
+<div id="actions">
         <h2 class="mt-5">Actions</h2>
         <button id="getButton" class="btn btn-primary"><i class="fas fa-search"></i> Get Student</button>
         <button id="putButton" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Update Student</button>
@@ -145,10 +148,11 @@
                 <input type="number" id="studentIdDelete" name="studentIdDelete" required>
             </div>
             <button type="submit">Delete Student</button>
+        </div>
         </form>
+    </div>
 
         <script src="/static/js/index.js"></script>
-    </div>
 </body>
 </html>
 

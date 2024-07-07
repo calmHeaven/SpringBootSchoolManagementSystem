@@ -49,7 +49,6 @@ public class Student {
         this.dob = dob;
         this.Major = Major;
         this.Years = Years;
-
     }
 
     public Long getId() {

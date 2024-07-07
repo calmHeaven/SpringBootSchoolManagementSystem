@@ -16,22 +16,22 @@ private final TeacherService teacherService;
     }
 
     @GetMapping()
-    public List<Teacher> getStudents() {
+    public List<Teacher> getTeacher() {
         return teacherService.getTeachers();
     }
 
     @PostMapping
-    public void registerNewStudent(Teacher teacher) {
+    public void registerNewTeacher(Teacher teacher) {
         teacherService.addNewTeacher(teacher);
     }
 
     @DeleteMapping(path = "{studentID}")
-    public void deleteStudent(@PathVariable("studentID") Long teacherId) {
+    public void deleteTeacher(@PathVariable("studentID") Long teacherId) {
         teacherService.deleteTeacher(teacherId);
     }
 
     @PutMapping(path = "{teacherId}")
-    public void updateStudent(
+    public void updateTeacher(
             @PathVariable("teacherId") Long teacherId,
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String email,
