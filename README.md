@@ -23,7 +23,7 @@ This is a Spring Boot project for managing school-related tasks such as student 
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/your-username/school-management-system.git
+   git clone https://github.com/your-username//SpringBootSchoolManagementSystem.git
    ```
 
 2. **Database Configuration**:
